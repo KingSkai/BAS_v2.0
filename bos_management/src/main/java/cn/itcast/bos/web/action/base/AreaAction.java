@@ -67,8 +67,7 @@ public class AreaAction extends BaseAction<Area> {
 				continue;
 			}
 			// 跳过空行
-			if (row.getCell(0) == null
-					|| StringUtils.isBlank(row.getCell(0).getStringCellValue())) {
+			if (row.getCell(0) == null || StringUtils.isBlank(row.getCell(0).getStringCellValue())) {
 				continue;
 			}
 			Area area = new Area();

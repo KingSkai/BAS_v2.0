@@ -40,6 +40,8 @@ import com.opensymphony.xwork2.ModelDriven;
 public class CourierAction extends ActionSupport implements
 		ModelDriven<Courier> {
 
+	private static final long serialVersionUID = 1L;
+	
 	// 模型驱动
 	private Courier courier = new Courier();
 
@@ -47,11 +49,11 @@ public class CourierAction extends ActionSupport implements
 	public Courier getModel() {
 		return courier;
 	}
-
+	
 	// 注入Service
 	@Autowired
 	private CourierService courierService;
-
+	
 	// 添加快递员方法
 	@Action(value = "courier_save", results = { @Result(name = "success", location = "./pages/base/courier.html", type = "redirect") })
 	public String save() {
@@ -62,7 +64,7 @@ public class CourierAction extends ActionSupport implements
 	// 属性驱动接收客户端分页参数
 	private int page;
 	private int rows;
-
+	
 	public void setPage(int page) {
 		this.page = page;
 	}
