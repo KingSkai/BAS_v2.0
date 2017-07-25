@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "T_STANDARD")
 @NamedQueries({
-	@NamedQuery(name="Standard.queryName2",query="from Standard where name=?")})
+@NamedQuery(name="Standard.queryName2",query="from Standard where name=?")})
 public class Standard {
 	@Id
 	@GeneratedValue

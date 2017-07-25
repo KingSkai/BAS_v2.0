@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>基于AngularJS事件绑定</title>
+		<script src="../js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<!-- ng-app="myapp"定义了一个模块 -->
+		<div ng-app="myapp" ng-controller="myctrl">
+			<div>
+				<!-- ng-model 模型作用 -->
+				<input type="text" ng-model="name"/>
+				<!-- 按钮Angular事件 -->
+				<input type="button" value="清空" ng-click="valClear()"/>
+			</div>
+			<div>
+				<!-- {{}} 等价于ng-bind 用于数据显示 -->
+				hello , {{name}}
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			// 初始化myapp 模块
+			var myapp = angular.module("myapp",[]);
+			// 定义模块的控制器
+			// 依赖注入,$.scop作用域对象,操作当前作用域视图
+			myapp.controller("myctrl",["$scope",function($scope){
+				// 对模型进行初始化赋值
+				$scope.name = "KingS_kai";
+				// 处理Angular的click事件
+				$scope.valClear = function(){
+					$scope.name = "";
+				};
+			}]);
+		</script>
+		
+	</body>
+
+</html>

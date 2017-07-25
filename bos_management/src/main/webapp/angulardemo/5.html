@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>AngularJS 路由</title>
+		<script src="../js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
+		<h1>头部</h1>
+	</head>
+
+	<body>
+		<div id="content" ng-app="myapp">
+			<a href="#/Chai">柴犬</a>
+			<a href="#/Ke">柯基</a>
+			<a href="#/Ha">哈士奇</a>
+			<div ng-view></div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		/* 属性注入 */
+		var myapp = angular.module("myapp", ["ngRoute"]);
+		myapp.config(["$routeProvider", function($routeProvider){
+			$routeProvider
+			 .when('/Chai', {
+				 templateUrl: '5_1.html'
+			 }).when('/Ke', {
+				 templateUrl: '5_2.html'
+			 }).when('/Ha', {
+				 templateUrl: '5_3.html'
+			 }).otherwise({
+			 	redirectTo: '/Chai'
+			 });
+		}]);
+	</script>
+
+	<footer>
+		<h1>底部</h1>
+	</footer>
+
+</html>

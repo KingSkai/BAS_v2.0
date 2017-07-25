@@ -49,4 +49,10 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 	}
 
+	@Override
+	public void regist(Customer customer) {
+		System.out.println("执行保存" + customer);
+		customerRepository.save(customer);
+	}
+
 }

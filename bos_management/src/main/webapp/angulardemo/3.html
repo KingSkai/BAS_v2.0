@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>基于AngularJS事件绑定</title>
+		<script src="../js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body ng-app="myapp" ng-controller="myctrl">
+		<table width="100%" border="1">
+			<tr>
+				<th>序号</th>
+				<th>商品编号</th>
+				<th>商品名称</th>
+				<th>价格</th>
+			</tr>
+			<tr ng-repeat="product in products">
+				<td>{{$index+1}}</td>
+				<td>{{product.id}}</td>
+				<td>{{product.name}}</td>
+				<td>{{product.price}}</td>
+			</tr>
+		</table>
+	</body>
+	
+	<script type="text/javascript">
+		// 初始化myapp 模块
+		var myapp = angular.module("myapp",[]);
+		// 定义模块的控制器
+		// 依赖注入,$.scop作用域对象,操作当前作用域视图
+		myapp.controller("myctrl",["$scope",function($scope){
+			$scope.products = [
+				{
+					id : 1001,
+					name : '华硕笔记本',
+					price : 4999
+				},
+				{
+					id : 1002,
+					name : '外星人笔记本',
+					price : 12999
+				}
+			];
+		}])
+	</script>
+
+</html>
