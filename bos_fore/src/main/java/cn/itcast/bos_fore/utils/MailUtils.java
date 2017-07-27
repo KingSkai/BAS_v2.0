@@ -11,13 +11,12 @@ import javax.mail.internet.MimeMessage.RecipientType;
 
 public class MailUtils {
 	private static String smtp_host = "smtp.163.com"; // 网易
-	private static String username = "itcast_search@163.com"; // 邮箱账户
-	private static String password = "itcast123"; // 授权码
-	private static String from = "itcast_search@163.com"; // 使用当前账户 发送邮件
-	private static String activeUrl = "http://localhost:9003/bos_fore/customer_activeMail";
+	private static String username = "wangkai_ios@163.com"; // 邮箱账户
+	private static String password = "wang123"; // 授权码
+	private static String from = "wangkai_ios@163.com"; // 使用当前账户 发送邮件
+	public static String activeUrl = "http://localhost:9003/bos_fore/customer_activeMail";
 
-	public static void sendMail(String subject, String content, String to,
-			String activecode) {
+	public static void sendMail(String subject, String content, String to) {
 		Properties props = new Properties();
 		props.setProperty("mail.smtp.host", smtp_host);
 		props.setProperty("mail.transport.protocol", "smtp");
@@ -39,6 +38,6 @@ public class MailUtils {
 	}
 
 	public static void main(String[] args) {
-		sendMail("测试邮件", "你好，传智播客", "itcast_search@163.com","654321");
+		sendMail("测试邮件", "你好，KingS_kai", "wangkai_ios@163.com");
 	}
 }

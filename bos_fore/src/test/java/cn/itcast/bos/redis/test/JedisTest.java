@@ -10,7 +10,8 @@ public class JedisTest {
 		// 连接 localhost 默认端口6379
 		Jedis jedis = new Jedis("localhost");
 		
-		jedis.set("company", "KingS_kai");
+		// 设置声明周期为 10秒
+		jedis.setex("company", 10, "KingS_kai");
 		
 		System.out.println(jedis.get("company"));
 	}

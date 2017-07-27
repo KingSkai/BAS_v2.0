@@ -54,4 +54,13 @@ public interface CustomerService {
 	@Consumes({"application/xml","application/json"}) // 返回值类型
 	public void regist(Customer customer);
 	
+	@Path("/customer/telephone/{telephone}")
+	@GET
+	@Consumes({"application/xml","application/json"})
+	public Customer findByTelephone(@PathParam("telephone") String telephone);
+	
+	@Path("/customer/updatetype/{telephone}")
+	@GET
+	public void updateType(@PathParam("telephone") String telephone);
+	
 }

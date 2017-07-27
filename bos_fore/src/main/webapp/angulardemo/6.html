@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>BootStrap+AngularJS分页显示 </title>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
+		<link rel="stylesheet" href="../css/bootstrap/bootstrap.css" />
+		<script type="text/javascript" src="../js/angular.min.js"></script>
+	</head>
+
+	<body ng-app="paginationApp" ng-controller="paginationCtrl">
+		<table class="table table-bordered">
+			<tr>
+				<th>序号</th>
+				<th>商品编号</th>
+				<th>名称</th>
+				<th>价格</th>
+			</tr>
+			<tr ng-repeat="product in products">
+				<td>{{$index+1}}</td>
+				<td>{{product.id}}</td>
+				<td>{{product.name}}</td>
+				<td>{{product.price}}</td>
+			</tr>
+		</table>
+		<div>
+			<ul class="pagination pull-right">
+				<li>
+					<a href ng-click="prev()">上一页</a>
+				</li>
+				<!--<li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}">
+					<a href ng-click="selectPage(page)">{{page}}</a>
+				</li>-->
+				<li>
+					<a href="#">1</a>
+					<a href="#">2</a>
+				</li>
+				<li>
+					<a href ng-click="next()">下一页</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		var paginationApp = angular.module("paginationApp",[]); 
+		paginationApp.controller("paginationApp", ["$scope","$http", function($scope,$http){
+			$http({
+				method: 'GET',
+				url: '6_1.json',
+				params: {
+					
+				}
+			}).success(function(data, status, headers, config){
+				$scope.products = data.products;
+			}).error(function(data,status,headers,config){
+				alert("出错, 请联系管理员");
+			});
+		}]);
+		
+		
+	</script>
+
+</html>
