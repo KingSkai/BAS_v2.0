@@ -21,4 +21,7 @@
 	
 	<!-- 引入外部数据文件 -->
 	<import resource="applicationContext-dataSource.xml"/>
+	
+	<!-- 引入WebService -->
+	<import resource="applicationContext-webService.xml"/>
 </beans>

@@ -1,20 +1,28 @@
 package cn.itcast.bos.service.take_delivery;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import cn.itcast.bos.domain.page.PageBean;
 import cn.itcast.bos.domain.take_delivery.Promotion;
 
-public class PromotionService {
+public interface PromotionService  {
 
-	public void save(Promotion model) {
-		// TODO Auto-generated method stub
-		
-	}
+	// 保存宣传任务
+	void save(Promotion model) ;
 
-	public Page<Promotion> findPageData(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	// 分页查询
+	Page<Promotion> findPageData(Pageable pageable) ;
+	
+	// 根据page和rows返回分页数据
+	// 使用WebService
+	@Path("/pageQuery")
+	@GET
+	@Produces({"application/xml","application/json"})
+	PageBean<Promotion> findPageData(@QueryParam("page") int page, @QueryParam("rows") int rows);
 }
