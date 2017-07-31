@@ -4,6 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
@@ -11,20 +12,28 @@
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/data/jpa 
-		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
- 
-	<!-- 扫描 @Server @Controller @Repository -->
-	<context:component-scan base-package="cn.itcast"/>
-
-	<!-- 加载properties文件 -->
-	<context:property-placeholder location="classpath:config.properties" />
-	
-	<!-- 引入外部数据文件 -->
-	<import resource="applicationContext-dataSource.xml"/>
-	
-	<!-- 引入WebService -->
-	<import resource="applicationContext-webService.xml"/>
-	
-	<!-- 引入定时管理框架,quartz -->
-	<import resource="applicationContext-quartz.xml"/>
+		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd ">
+		
+		<!-- job -->
+		<bean id="promotionJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+			<property name="jobClass" value="cn.itcast.bos.quartz.PromotionJob"/>
+		</bean>
+		
+		<!-- trigger -->
+		<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+			<property name="jobDetail" ref="promotionJob"/>
+			<property name="startDelay" value="0"/>
+			<property name="repeatInterval" value="60000"/>
+		</bean>
+		
+		<!-- scheduler -->
+		<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+			<property name="jobFactory" ref="jobFactory"/>
+			<property name="triggers">
+				<list>
+					<ref bean="simpleTrigger"/>
+				</list>
+			</property>
+		</bean>
 </beans>

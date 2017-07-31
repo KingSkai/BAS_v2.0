@@ -24,4 +24,7 @@
 	
 	<!-- 引入WebService -->
 	<import resource="applicationContext-webService.xml"/>
+	
+	<!-- 引入定时管理框架,quartz -->
+	<import resource="applicationContext-quartz.xml"/>
 </beans>
