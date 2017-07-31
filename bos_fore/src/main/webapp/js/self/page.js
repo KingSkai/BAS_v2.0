@@ -23,11 +23,12 @@ bosfore_app.controller("ctrlRead", ['$scope', '$http', function($scope, $http) {
 		}
 
 		$http({
+			
 			method: 'GET',
 			url: 'promotion_pageQuery.action',
 			params: {
-				"page": page,
-				"pageSize": $scope.pageSize
+				"page": page, // 当前页码 
+				"rows": $scope.pageSize // 每页记录数
 			}
 		}).success(function(data, status, headers, config) {
 			// 显示表格数据 

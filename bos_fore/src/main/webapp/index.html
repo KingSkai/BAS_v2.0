@@ -167,8 +167,11 @@
 					templateUrl: 'myhome.html'
 				}).when("/promotion", {
 					templateUrl: 'promotion.html'
-				}).when("/promotion_detail", {
-					templateUrl: 'promotion_detail.html'
+				}).when("/promotion_detail/:id", {
+					// 将templateUrl返回的url 代替:id  拼接 生成url -- /promotion_detail/promotion_showDetail.action?id=1;
+					templateUrl: function($routeParams){
+						return "promotion_showDetail.action?id=" + $routeParams.id;
+					}
 				}).otherwise({
 					redirectTo: '/'
 				})

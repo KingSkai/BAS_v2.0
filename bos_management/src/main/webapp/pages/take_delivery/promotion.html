@@ -34,21 +34,21 @@
 							title: '宣传图片',
 							width: 200,
 							formatter : function(value,row,index){
-								return "<img src='" + value + " width=''100' height='100'>";
+								return "<img src='"+value+"' width='100' height='100' />";
 							}
 						},{
 							field: 'startDate',
 							title: '发布时间',
 							width: 100,
 							formatter : function(value,row,index){
-								return value.replace("T", " ");
+								return value.replace("T"," ");
 							}
 						}, {
 							field: 'endDate',
 							title: '实效时间',
 							width: 100,
 							formatter : function(value,row,index){
-								return value.replace("T", " ");
+								return value.replace("T"," ");
 							}
 						}, {
 							field: 'updateTime',
