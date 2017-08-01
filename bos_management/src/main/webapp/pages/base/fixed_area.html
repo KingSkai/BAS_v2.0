@@ -60,7 +60,7 @@
 					
 					// 显示进度条
 					$.messager.progress({
-						interval :200 // 每0.5秒加载10%, 5秒加载完
+						interval :500 // 每0.5秒加载10%, 5秒加载完
 					});
 					
 					// 发起Ajax请求 
@@ -523,7 +523,8 @@
 		<div class="easyui-window" title="关联客户窗口" id="customerWindow" modal="true"
 			collapsible="false" closed="true" minimizable="false" maximizable="false" style="top:20px;left:200px;width: 700px;height: 300px;">
 			<div style="overflow:auto;padding:5px;" border="false">
-				<form id="customerForm"  action="../../fixedArea_associationCustomersToFixedArea.action" method="post">
+				<form id="customerForm" 
+					action="../../fixedArea_associationCustomersToFixedArea.action" method="post">
 					<table class="table-edit" width="80%" align="center">
 						<tr class="title">
 							<td colspan="3">关联客户</td>

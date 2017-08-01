@@ -23,7 +23,6 @@ bosfore_app.controller("ctrlRead", ['$scope', '$http', function($scope, $http) {
 		}
 
 		$http({
-			
 			method: 'GET',
 			url: 'promotion_pageQuery.action',
 			params: {

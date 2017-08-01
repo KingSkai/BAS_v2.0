@@ -144,16 +144,15 @@
 			    });
 			    
 			    // 为导入按钮，添加一键上传效果 
-			    // 使用ocupload(三方js)完成文件的一键上传
-			    $("#button-import").upload({ 
+			    $("#button-import").upload({
 			    	// 默认name为file 
-			    	action : '../../area_batchImport.action', // 默认提交路径
+			    	action : '../../area_batchImport.action',
 			    	onSelect :function(){
 			    		// 选中文件后，关闭自动提交 
 			    		this.autoSubmit = false ;
 			    		// 判定文件格式 ，以.xls 或者 .xlsx 结尾 
 			    		var filename = this.filename();
-			    		var regex = /^.*\.(xls|xlsx)$/ ; // 正则
+			    		var regex = /^.*\.(xls|xlsx)$/ ;
 			    		if(regex.test(filename)){
 			    			// 满足
 			    			this.submit();
@@ -161,7 +160,7 @@
 			    			$.messager.alert("警告","只能上传.xls或.xlsx结尾的文件！","warning");
 			    		}
 			    	},
-			    	onComplete : function(response){ // 文件上传完毕之后
+			    	onComplete : function(response){
 			    		alert("文件上传成功！");
 			    	}
 			    });

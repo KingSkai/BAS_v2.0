@@ -24,6 +24,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Controller;
 
+import cn.itcast.bos.domain.constant.Constants;
 import cn.itcast.bos_fore.utils.MailUtils;
 import cn.itcast.bos_fore.utils.SmsUtils;
 import cn.itcast.crm.domain.Customer;
@@ -158,6 +159,30 @@ public class CustomerAction extends BaseAction<Customer> {
 			redisTemplate.delete(model.getTelephone());
 		}
 		return NONE;
+	}
+	
+	/**
+	 * 用户登录方法
+	 */
+	@Action(value="customer_login", results={
+			@Result(name="login", location="login.html", type="redirect"),
+			@Result(name="success", location="index.html#myhome",type="redirect")})
+	public String login() {
+		Customer customer = WebClient.create(Constants.CRM_MANAGEMENT_URL+
+				 "/services/customerService/customer/login?telephone="
+				 + model.getTelephone() + "&password="
+				 + model.getPassword())
+				 .accept(MediaType.APPLICATION_JSON).get(Customer.class);
+		if (customer == null) {
+			System.out.println("登录失败!");
+			// 登录失败
+			return LOGIN;
+		} else {
+			// 登录成功
+			System.out.println("登录成功!");
+			ServletActionContext.getRequest().getSession().setAttribute("customer", customer);
+			return SUCCESS;
+		}
 	}
 
 }
