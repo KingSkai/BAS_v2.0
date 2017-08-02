@@ -14,7 +14,7 @@ import org.springframework.data.domain.Pageable;
 import cn.itcast.bos.domain.page.PageBean;
 import cn.itcast.bos.domain.take_delivery.Promotion;
 
-public interface PromotionService  {
+public interface PromotionService {
 
 	// 保存宣传任务
 	void save(Promotion promotion);

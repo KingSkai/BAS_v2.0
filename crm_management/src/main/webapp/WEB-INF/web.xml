@@ -14,7 +14,6 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
-	<!-- 配置了之后 服务才能发布 -->
 	<servlet>
 		<servlet-name>CXFService</servlet-name>
 		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>

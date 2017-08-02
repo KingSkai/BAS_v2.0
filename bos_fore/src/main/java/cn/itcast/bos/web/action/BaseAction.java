@@ -20,7 +20,6 @@ import com.opensymphony.xwork2.ModelDriven;
 public abstract class BaseAction<T> extends ActionSupport implements
 		ModelDriven<T> {
 
-	private static final long serialVersionUID = 1L;
 	// 模型驱动
 	protected T model;
 

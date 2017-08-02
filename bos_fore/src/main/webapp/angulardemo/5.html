@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
-		<title>AngularJS 路由</title>
-		<script src="../js/angular.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
-		<h1>头部</h1>
+		<title>AngularJS路由使用 </title>
+		<script type="text/javascript" src="../js/angular.min.js" ></script>
+		<script type="text/javascript" src="../js/angular-route.min.js" ></script>
 	</head>
-
-	<body>
-		<div id="content" ng-app="myapp">
-			<a href="#/Chai">柴犬</a>
-			<a href="#/Ke">柯基</a>
-			<a href="#/Ha">哈士奇</a>
-			<div ng-view></div>
+	<body ng-app="myapp">
+		<div>
+			<h1>HEAD</h1>
+			<a href="#/JavaEE">JavaEE</a>
+			<a href="#/IOS">IOS</a>
+			<a href="#/Android">Android</a>
+		</div>
+		<!-- 路由加载后，更新变化的内容 -->
+		<div ng-view>
+			
+		</div>
+		<div>
+			<h1>FOOT</h1>
 		</div>
 	</body>
-
 	<script type="text/javascript">
-		/* 属性注入 */
-		var myapp = angular.module("myapp", ["ngRoute"]);
+		// 定义 myapp 模块 
+		var myapp = angular.module("myapp",["ngRoute"]);
+		
+		// 配置模块的路由 
 		myapp.config(["$routeProvider", function($routeProvider){
 			$routeProvider
-			 .when('/Chai', {
+			 .when('/JavaEE', {
 				 templateUrl: '5_1.html'
-			 }).when('/Ke', {
+			 }).when('/IOS', {
 				 templateUrl: '5_2.html'
-			 }).when('/Ha', {
+			 }).when('/Android', {
 				 templateUrl: '5_3.html'
 			 }).otherwise({
-			 	redirectTo: '/Chai'
+			 	redirectTo: '/JavaEE'
 			 });
 		}]);
+		
 	</script>
-
-	<footer>
-		<h1>底部</h1>
-	</footer>
-
 </html>

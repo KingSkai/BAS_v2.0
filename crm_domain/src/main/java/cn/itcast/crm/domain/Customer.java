@@ -33,7 +33,7 @@ public class Customer {
 	@Temporal(TemporalType.DATE)
 	private Date birthday; // 生日
 	@Column(name = "C_SEX")
-	private Integer sex; // 性别
+	private Integer sex; // 性别 1男 2女
 	@Column(name = "C_TELEPHONE")
 	private String telephone; // 手机
 	@Column(name = "C_COMPANY")
@@ -165,13 +165,10 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", username=" + username + ", password="
-				+ password + ", type=" + type + ", birthday=" + birthday
-				+ ", sex=" + sex + ", telephone=" + telephone + ", company="
-				+ company + ", department=" + department + ", position="
-				+ position + ", address=" + address + ", mobilePhone="
-				+ mobilePhone + ", email=" + email + ", fixedAreaId="
-				+ fixedAreaId + "]";
+		return "Customer [id=" + id + ", username=" + username + ", password=" + password + ", type=" + type
+				+ ", birthday=" + birthday + ", sex=" + sex + ", telephone=" + telephone + ", company=" + company
+				+ ", department=" + department + ", position=" + position + ", address=" + address + ", mobilePhone="
+				+ mobilePhone + ", email=" + email + ", fixedAreaId=" + fixedAreaId + "]";
 	}
 
 }

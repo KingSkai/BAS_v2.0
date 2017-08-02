@@ -17,39 +17,39 @@ import cn.itcast.bos.service.base.FixedAreaService;
 
 @Service
 @Transactional
-public class FixedAreaServiceImpl implements FixedAreaService{
+public class FixedAreaServiceImpl implements FixedAreaService {
 
 	// 注入DAO
 	@Autowired
-	private FixedAreaRepository fixedAreaReopsitory;
-	
+	private FixedAreaRepository fixedAreaRepository;
+
 	@Override
 	public void save(FixedArea fixedArea) {
-		fixedAreaReopsitory.save(fixedArea);
+		fixedAreaRepository.save(fixedArea);
 	}
 
 	@Override
 	public Page<FixedArea> findPageData(Specification<FixedArea> specification,
 			Pageable pageable) {
-		return fixedAreaReopsitory.findAll(specification, pageable);
+		return fixedAreaRepository.findAll(specification, pageable);
 	}
 
 	@Autowired
 	private CourierRepository courierRepository;
-	
 	@Autowired
 	private TakeTimeRepository takeTimeRepository;
-	
+
 	@Override
-	public void associationCourierToFixedArea(FixedArea model,
+	public void associationCourierToFixedArea(FixedArea fixedArea,
 			Integer courierId, Integer takeTimeId) {
-		FixedArea fixedArea = fixedAreaReopsitory.findOne(model.getId());
+		FixedArea persistFixedArea = fixedAreaRepository.findOne(fixedArea
+				.getId());
 		Courier courier = courierRepository.findOne(courierId);
 		TakeTime takeTime = takeTimeRepository.findOne(takeTimeId);
-		// 快递员关联到定区上
-		fixedArea.getCouriers().add(courier);
-		// 将收派事件 关联到快递员上
-		// 一对多的关系, 多个快递员可以使用相同的收派时间
+		// 快递员 关联到 定区上
+		persistFixedArea.getCouriers().add(courier);
+
+		// 将收派标准 关联到 快递员上
 		courier.setTakeTime(takeTime);
 	}
 

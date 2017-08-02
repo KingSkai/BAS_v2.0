@@ -10,28 +10,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.opensymphony.xwork2.ActionContext;
-
 import cn.itcast.bos.domain.base.TakeTime;
 import cn.itcast.bos.service.base.TakeTimeService;
 import cn.itcast.bos.web.action.common.BaseAction;
 
-@ParentPackage("json-default")
+import com.opensymphony.xwork2.ActionContext;
+
 @Namespace("/")
+@ParentPackage("json-default")
 @Controller
 @Scope("prototype")
-public class TakeTimeAction extends BaseAction<TakeTime>{
+public class TakeTimeAction extends BaseAction<TakeTime> {
 
 	@Autowired
 	private TakeTimeService takeTimeService;
-	
-	// 查询排版表数据
-	@Action(value="taketime_findAll", results={@Result(name="success", type="json")})
-	public String findAll(){
-		
-		 List<TakeTime> takeTimes = takeTimeService.findAll();
-		// 压入值栈
-		 ActionContext.getContext().getValueStack().push(takeTimes);
+
+	@Action(value = "taketime_findAll", 
+			results = { @Result(name = "success", type = "json") })
+	public String findAll() {
+		// 调用业务层，查询所有收派时间
+		List<TakeTime> takeTimes = takeTimeService.findAll();
+		// 压入值栈返回
+		ActionContext.getContext().getValueStack().push(takeTimes);
 		return SUCCESS;
 	}
 }

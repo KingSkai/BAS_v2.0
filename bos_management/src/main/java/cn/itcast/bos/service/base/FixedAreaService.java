@@ -10,7 +10,8 @@ public interface FixedAreaService {
 
 	void save(FixedArea model);
 
-	Page<FixedArea> findPageData(Specification<FixedArea> specification, Pageable pageable);
+	Page<FixedArea> findPageData(Specification<FixedArea> specification,
+			Pageable pageable);
 
 	void associationCourierToFixedArea(FixedArea model, Integer courierId,
 			Integer takeTimeId);

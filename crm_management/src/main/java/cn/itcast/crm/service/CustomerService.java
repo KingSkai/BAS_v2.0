@@ -24,7 +24,7 @@ public interface CustomerService {
 	// 查询所有未关联客户列表
 	@Path("/noassociationcustomers")
 	@GET
-	@Produces({ "application/xml", "application/json" }) // 设置可接收的返回数据类型
+	@Produces({ "application/xml", "application/json" })
 	public List<Customer> findNoAssociationCustomers();
 
 	// 已经关联到指定定区的客户列表
@@ -32,39 +32,38 @@ public interface CustomerService {
 	@GET
 	@Produces({ "application/xml", "application/json" })
 	public List<Customer> findHasAssociationFixedAreaCustomers(
-			@PathParam("fixedareaid") String fixedAreaId); // 注入参数
+			@PathParam("fixedareaid") String fixedAreaId);
 
-	/**
-	 * QueryParam 代表 客户端需要传入的参数!
-	 * @param customerIdStr
-	 * @param fixedAreaId
-	 */
 	// 将客户关联到定区上 ， 将所有客户id 拼成字符串 1,2,3
 	@Path("/associationcustomerstofixedarea")
 	@PUT
 	public void associationCustomersToFixedArea(
-			@QueryParam("customerIdStr") String customerIdStr, // QyertParam http请求参数
+			@QueryParam("customerIdStr") String customerIdStr,
 			@QueryParam("fixedAreaId") String fixedAreaId);
 
-	/**
-	 * 注册用户的方法
-	 */
 	@Path("/customer")
-	@POST // post 代表添加
-	@Consumes({"application/xml","application/json"}) // 返回值类型
+	@POST
+	@Consumes({ "application/xml", "application/json" })
 	public void regist(Customer customer);
-	
+
 	@Path("/customer/telephone/{telephone}")
 	@GET
-	@Consumes({"application/xml","application/json"})
+	@Consumes({ "application/xml", "application/json" })
 	public Customer findByTelephone(@PathParam("telephone") String telephone);
-	
+
 	@Path("/customer/updatetype/{telephone}")
 	@GET
 	public void updateType(@PathParam("telephone") String telephone);
-	
-	@Path("/customer/login")
+
+	@Path("customer/login")
 	@GET
-	@Consumes({"application/xml","application/json"})
-	public Customer login(@QueryParam("telephone") String telephone, @QueryParam("password") String password);
+	@Consumes({ "application/xml", "application/json" })
+	public Customer login(@QueryParam("telephone") String telephone,
+			@QueryParam("password") String password);
+
+	@Path("/customer/findFixedAreaIdByAddress")
+	@GET
+	@Consumes({ "application/xml", "application/json" })
+	public String findFixedAreaIdByAddress(@QueryParam("address") String address);
+
 }

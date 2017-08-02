@@ -51,7 +51,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void regist(Customer customer) {
-		System.out.println("执行保存" + customer);
+		System.out.println(customer);
 		customerRepository.save(customer);
 	}
 
@@ -67,7 +67,13 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer login(String telephone, String password) {
-		return customerRepository.findByTelephoneAndPassword(telephone,password);
+		return customerRepository.findByTelephoneAndPassword(telephone,
+				password);
+	}
+
+	@Override
+	public String findFixedAreaIdByAddress(String address) {
+		return customerRepository.findFixedAreaIdByAddress(address);
 	}
 
 }

@@ -14,7 +14,6 @@ import cn.itcast.bos.domain.page.PageBean;
 import cn.itcast.bos.domain.take_delivery.Promotion;
 import cn.itcast.bos.service.take_delivery.PromotionService;
 
-
 @Service
 @Transactional
 public class PromotionServiceImpl implements PromotionService {

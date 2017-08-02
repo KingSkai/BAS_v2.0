@@ -22,9 +22,12 @@
 	<!-- 引入外部数据文件 -->
 	<import resource="applicationContext-dataSource.xml"/>
 	
-	<!-- 引入WebService -->
+	<!-- 引入WebService配置 -->
 	<import resource="applicationContext-webService.xml"/>
 	
-	<!-- 引入定时管理框架,quartz -->
+	<!-- 引入quartz配置 -->
 	<import resource="applicationContext-quartz.xml"/>
+	
+	<!-- 引入 mq配置  -->
+	<import resource="applicationContext-mq.xml"/>
 </beans>

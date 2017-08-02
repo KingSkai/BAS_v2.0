@@ -15,20 +15,17 @@ public class CustomerServiceTest {
 	@Autowired
 	private CustomerService customerService;
 
-	// 未关联的客户列表
 	@Test
 	public void testFindNoAssociationCustomers() {
 		System.out.println(customerService.findNoAssociationCustomers());
 	}
 
-	// 已关联的客户列表
 	@Test
 	public void testFindHasAssociationFixedAreaCustomers() {
 		System.out.println(customerService
 				.findHasAssociationFixedAreaCustomers("dq001"));
 	}
 
-	// 进行定区和客户的关联(修改)
 	@Test
 	public void testAssociationCustomersToFixedArea() {
 		customerService.associationCustomersToFixedArea("1,2", "dq001");

@@ -47,22 +47,19 @@ public class CourierServiceImpl implements CourierService {
 		}
 	}
 
-	/**
-	 * 查询未关联快递员的方法
-	 */
 	@Override
-	public List<Courier> findnoassociation() {
+	public List<Courier> findNoAssociation() {
+		// 封装Specification
 		Specification<Courier> specification = new Specification<Courier>() {
-
 			@Override
 			public Predicate toPredicate(Root<Courier> root,
 					CriteriaQuery<?> query, CriteriaBuilder cb) {
-				Predicate predicate = cb.isEmpty(root.get("fixedAreas").as(
-						Set.class));
-				return predicate;
+				// 查询条件，判定列表size为空
+				Predicate p = cb.isEmpty(root.get("fixedAreas").as(Set.class));
+				return p;
 			}
 		};
 		return courierRepository.findAll(specification);
 	}
-	
+
 }

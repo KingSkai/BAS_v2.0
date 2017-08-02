@@ -15,8 +15,8 @@ import cn.itcast.bos.service.base.TakeTimeService;
 public class TakeTimeServiceImpl implements TakeTimeService {
 
 	@Autowired
-	TakeTimeRepository takeTimeRepository;
-	
+	private TakeTimeRepository takeTimeRepository;
+
 	@Override
 	public List<TakeTime> findAll() {
 		return takeTimeRepository.findAll();
