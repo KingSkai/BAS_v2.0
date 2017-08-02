@@ -40,8 +40,6 @@ import com.opensymphony.xwork2.ModelDriven;
 public class CourierAction extends ActionSupport implements
 		ModelDriven<Courier> {
 
-	private static final long serialVersionUID = 1L;
-	
 	// 模型驱动
 	private Courier courier = new Courier();
 
@@ -49,11 +47,11 @@ public class CourierAction extends ActionSupport implements
 	public Courier getModel() {
 		return courier;
 	}
-	
+
 	// 注入Service
 	@Autowired
 	private CourierService courierService;
-	
+
 	// 添加快递员方法
 	@Action(value = "courier_save", results = { @Result(name = "success", location = "./pages/base/courier.html", type = "redirect") })
 	public String save() {
@@ -64,7 +62,7 @@ public class CourierAction extends ActionSupport implements
 	// 属性驱动接收客户端分页参数
 	private int page;
 	private int rows;
-	
+
 	public void setPage(int page) {
 		this.page = page;
 	}
@@ -149,16 +147,14 @@ public class CourierAction extends ActionSupport implements
 
 		return SUCCESS;
 	}
-	
-	// 未关联快递员 查询
-	@Action(value = "courier_findnoassociation", results = { @Result(name = "success", type = "json") })
+
+	@Action(value = "courier_findnoassociation", 
+			results = { @Result(name = "success", type = "json") })
 	public String findnoassociation() {
-		// 调用业务层,查询为未关联定区的快递员
-		List<Courier> list = courierService.findnoassociation();
-		// 将查询快递员列表压入值栈
-		ActionContext.getContext().getValueStack().push(list);
+		// 调用业务层，查询未关联定区的快递员 
+		List<Courier> couriers = courierService.findNoAssociation();
+		// 将查询快递员列表 压入值栈 
+		ActionContext.getContext().getValueStack().push(couriers);
 		return SUCCESS;
 	}
-	
-	
 }

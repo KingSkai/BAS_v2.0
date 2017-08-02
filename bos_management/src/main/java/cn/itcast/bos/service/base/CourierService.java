@@ -26,6 +26,7 @@ public interface CourierService {
 	// 批量作废
 	public void delBatch(String[] idArray);
 
-	public List<Courier> findnoassociation();
+	// 查询未关联定区的快递员
+	public List<Courier> findNoAssociation();
 
 }

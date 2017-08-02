@@ -1,7 +1,7 @@
 package cn.itcast.bos.web.action.base;
 
-import java.util.Collection;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -31,10 +31,11 @@ import cn.itcast.crm.domain.Customer;
 
 import com.opensymphony.xwork2.ActionContext;
 
+// 定区管理
 @ParentPackage("json-default")
-@Scope("prototype")
 @Namespace("/")
 @Controller
+@Scope("prototype")
 public class FixedAreaAction extends BaseAction<FixedArea> {
 
 	// 注入Service
@@ -52,7 +53,6 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
 	// 分页查询
 	@Action(value = "fixedArea_pageQuery", results = { @Result(name = "success", type = "json") })
 	public String pageQuery() {
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~执行查询操作~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		// 构造Pageable
 		Pageable pageable = new PageRequest(page - 1, rows);
 		// 构造条件查询对象
@@ -90,7 +90,6 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
 	}
 
 	// 查询未关联定区列表
-	// 左侧
 	@Action(value = "fixedArea_findNoAssociationCustomers", results = { @Result(name = "success", type = "json") })
 	public String findNoAssociationCustomers() {
 		// 使用webClient调用 webService接口
@@ -102,8 +101,7 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
 		return SUCCESS;
 	}
 
-	// 查询关联当前定区列表
-	// 右侧
+	// 查询关联当前定区的列表
 	@Action(value = "fixedArea_findHasAssociationFixedAreaCustomers", results = { @Result(name = "success", type = "json") })
 	public String findHasAssociationFixedAreaCustomers() {
 		// 使用webClient调用 webService接口
@@ -115,7 +113,6 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
 		return SUCCESS;
 	}
 
-	// 接收 关联客户的数组
 	// 属性驱动
 	private String[] customerIds;
 
@@ -123,10 +120,6 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
 		this.customerIds = customerIds;
 	}
 
-	/**
-	 * 使用WebService 调用 服务端 crm_management 中 CustomerService中的方法 此处为客户端
-	 */
-	// 关联客户到定区的实现
 	// 关联客户到定区
 	@Action(value = "fixedArea_associationCustomersToFixedArea", results = { @Result(name = "success", type = "redirect", location = "./pages/base/fixed_area.html") })
 	public String associationCustomersToFixedArea() {
@@ -138,11 +131,11 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
 				null);
 		return SUCCESS;
 	}
-	
+
 	// 属性驱动
 	private Integer courierId;
 	private Integer takeTimeId;
-	
+
 	public void setCourierId(Integer courierId) {
 		this.courierId = courierId;
 	}
@@ -151,10 +144,14 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
 		this.takeTimeId = takeTimeId;
 	}
 
-	@Action(value="fixedArea_associationCourierToFixedArea",results = {@Result(name="success",type="redirect",location = "./pages/base/fixed_area.html")})
-	public String associationCourierToFixedArea(){
-		// 调用业务层,定区关联数据
-		fixedAreaService.associationCourierToFixedArea(model, courierId, takeTimeId);
+	// 关联快递员 到定区
+	@Action(value = "fixedArea_associationCourierToFixedArea", 
+			results = { @Result(name = "success", type = "redirect", 
+			location = "./pages/base/fixed_area.html") })
+	public String associationCourierToFixedArea() {
+		// 调用业务层， 定区关联快递员
+		fixedAreaService.associationCourierToFixedArea(model, courierId,
+				takeTimeId);
 		return SUCCESS;
 	}
 }

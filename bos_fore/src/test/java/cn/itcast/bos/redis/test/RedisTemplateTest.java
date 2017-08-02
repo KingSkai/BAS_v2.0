@@ -12,17 +12,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class RedisTemplateTest {
-	
+
 	@Autowired
 	private RedisTemplate<String, String> redisTemplate;
-	
+
 	@Test
-	public void test1(){
+	public void testRedis() {
 		// 保存key value
 		// 设置30秒失效
-		redisTemplate.opsForValue().set("city", "杭州", 30, TimeUnit.SECONDS);
-		
+		redisTemplate.opsForValue().set("city", "北京", 30, TimeUnit.SECONDS);
+
 		System.out.println(redisTemplate.opsForValue().get("city"));
 	}
-	
 }

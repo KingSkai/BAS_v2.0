@@ -2,14 +2,11 @@ package cn.itcast.bos.web.action;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.ws.rs.core.MediaType;
-
-import oracle.net.aso.p;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.cxf.jaxrs.client.WebClient;
@@ -21,7 +18,7 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.itcast.bos.domain.constant.Constants;
+import cn.itcast.bos.constant.Constants;
 import cn.itcast.bos.domain.page.PageBean;
 import cn.itcast.bos.domain.take_delivery.Promotion;
 
@@ -29,32 +26,29 @@ import com.opensymphony.xwork2.ActionContext;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import freemarker.template.TemplateException;
 
-@SuppressWarnings("all")
 @ParentPackage("json-default")
 @Namespace("/")
 @Controller
 @Scope("prototype")
-public class PromotionAction extends BaseAction<Promotion>{
-	/**
-	 * 客户端
-	 * @return
-	 */
+@SuppressWarnings("all")
+public class PromotionAction extends BaseAction<Promotion> {
+
 	@Action(value = "promotion_pageQuery", results = { @Result(name = "success", type = "json") })
 	public String pageQuery() {
-		//System.out.println("page:" + page);
+
 		// 基于WebService 获取 bos_management的 活动列表 数据信息
 		PageBean<Promotion> pageBean = WebClient
-				.create("http://localhost:9001/bos_management/services/promotionService/pageQuery?page="+page+"&rows="+rows+"")
-				.accept(MediaType.APPLICATION_JSON)
-				.get(PageBean.class);
-		
+				.create(Constants.BOS_MANAGEMENT_URL
+						+ "/bos_management/services/promotionService/pageQuery?page="
+						+ page + "&rows=" + rows)
+				.accept(MediaType.APPLICATION_JSON).get(PageBean.class);
+
 		ActionContext.getContext().getValueStack().push(pageBean);
 
 		return SUCCESS;
 	}
-	
+
 	@Action(value = "promotion_showDetail")
 	public String showDetail() throws Exception {
 		// 先判断 id 对应html 是否存在，如果存在 直接返回
@@ -96,5 +90,4 @@ public class PromotionAction extends BaseAction<Promotion>{
 
 		return NONE;
 	}
-	
 }

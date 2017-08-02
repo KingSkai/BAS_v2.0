@@ -26,8 +26,8 @@ bosfore_app.controller("ctrlRead", ['$scope', '$http', function($scope, $http) {
 			method: 'GET',
 			url: 'promotion_pageQuery.action',
 			params: {
-				"page": page, // 当前页码 
-				"rows": $scope.pageSize // 每页记录数
+				"page": page,
+				"rows": $scope.pageSize
 			}
 		}).success(function(data, status, headers, config) {
 			// 显示表格数据 

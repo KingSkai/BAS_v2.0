@@ -23,15 +23,21 @@ import cn.itcast.bos.web.action.common.BaseAction;
 
 import com.opensymphony.xwork2.ActionContext;
 
+/**
+ * 处理kindeditor图片上传 、管理功能
+ * 
+ * @author itcast
+ *
+ */
 @ParentPackage("json-default")
 @Namespace("/")
 @Controller
 @Scope("prototype")
-public class ImageAction  extends BaseAction<Object>{
-	// 属性驱动
-	private File imgFile; // 上传文件
-	private String imgFileFileName; // 文件名
-	private String imgFileContentType; // 文件类型
+public class ImageAction extends BaseAction<Object> {
+
+	private File imgFile;
+	private String imgFileFileName;
+	private String imgFileContentType;
 
 	public void setImgFile(File imgFile) {
 		this.imgFile = imgFile;
@@ -51,14 +57,15 @@ public class ImageAction  extends BaseAction<Object>{
 		System.out.println("文件名：" + imgFileFileName);
 		System.out.println("文件类型：" + imgFileContentType);
 
-		// 绝对路径, 将文件上传到本地服务器需要绝对路径
-		String savePath = ServletActionContext.getServletContext().getRealPath("/upload/");
-		// 相对路径, 从服务器读取文件路径, 可以使用相对路径
-		String saveUrl = ServletActionContext.getRequest().getContextPath() + "/upload/";
+		String savePath = ServletActionContext.getServletContext().getRealPath(
+				"/upload/");
+		String saveUrl = ServletActionContext.getRequest().getContextPath()
+				+ "/upload/";
 
 		// 生成随机图片名
 		UUID uuid = UUID.randomUUID();
-		String ext = imgFileFileName.substring(imgFileFileName.lastIndexOf("."));
+		String ext = imgFileFileName
+				.substring(imgFileFileName.lastIndexOf("."));
 		String randomFileName = uuid + ext;
 
 		// 保存图片 (绝对路径)
@@ -74,13 +81,16 @@ public class ImageAction  extends BaseAction<Object>{
 
 		return SUCCESS;
 	}
-	
+
 	@Action(value = "image_manage", results = { @Result(name = "success", type = "json") })
 	public String manage() {
 		// 根目录路径，可以指定绝对路径，比如 d:/xxx/upload/xxx.jpg
-		String rootPath = ServletActionContext.getServletContext().getRealPath("/")+ "upload/";
+		String rootPath = ServletActionContext.getServletContext().getRealPath(
+				"/")
+				+ "upload/";
 		// 根目录URL，可以指定绝对路径，比如 http://www.yoursite.com/attached/
-		String rootUrl = ServletActionContext.getRequest().getContextPath()+ "/upload/";
+		String rootUrl = ServletActionContext.getRequest().getContextPath()
+				+ "/upload/";
 
 		// 遍历目录取的文件信息
 		List<Map<String, Object>> fileList = new ArrayList<Map<String, Object>>();

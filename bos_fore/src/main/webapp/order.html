@@ -37,16 +37,15 @@
 		myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
 		G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
 		
-		// 选中详细地址后，调用百度地图获取 云地理编码 , 自动将选择的地址填充到省市区中
+		// 选中详细地址后，调用百度地图获取 云地理编码 
 		var address = encodeURIComponent(myValue);
 		$.getJSON(
 			"http://api.map.baidu.com/cloudgc/v1?ak=zbLsuDDL4CS2U0M4KezOZZbGUY9iWtVf&address="+address+"&callback=?",
 			function(data){
-			/* 省市区重新赋值 */
 			if(data.status == 0 && data.result.length>0 ){
 				$('#sendAreaInfo').citypicker('reset');
 				$('#sendAreaInfo').citypicker('destroy');
-				
+					
 				$('#sendAreaInfo').citypicker({
 					province: data.result[0].address_components.province ,
 					city: data.result[0].address_components.city ,

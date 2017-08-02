@@ -7,8 +7,9 @@ import javax.ws.rs.Path;
 import cn.itcast.bos.domain.take_delivery.Order;
 
 public interface OrderService {
+
 	@Path("/order")
 	@POST
-	@Consumes({"application/xml","application/json"})
+	@Consumes({ "application/xml", "application/json" })
 	public void saveOrder(Order order);
 }
