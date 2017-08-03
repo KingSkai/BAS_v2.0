@@ -189,4 +189,9 @@ public class OrderServiceImpl implements OrderService {
 		orderRepository.save(order);
 	}
 
+	@Override
+	public Order findByOrderNum(String orderNum) {
+		return orderRepository.findByOrderNum(orderNum);
+	}
+
 }
