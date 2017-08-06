@@ -1,5 +1,6 @@
 package cn.itcast.bos.domain.system;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ import org.apache.struts2.json.annotations.JSON;
  */
 @Entity
 @Table(name = "T_PERMISSION")
-public class Permission {
+public class Permission  implements Serializable{
 
 	@Id
 	@GeneratedValue

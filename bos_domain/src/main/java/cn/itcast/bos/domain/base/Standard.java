@@ -1,5 +1,6 @@
 package cn.itcast.bos.domain.base;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ import javax.persistence.TemporalType;
 @Table(name = "T_STANDARD")
 @NamedQueries({
 	@NamedQuery(name="Standard.queryName2",query="from Standard where name=?")})
-public class Standard {
+public class Standard implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name = "C_ID")
