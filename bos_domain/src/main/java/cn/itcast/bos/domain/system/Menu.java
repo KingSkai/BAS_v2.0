@@ -13,6 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.apache.struts2.json.annotations.JSON;
+import org.springframework.data.annotation.Transient;
+
+import com.sun.xml.internal.ws.developer.Serialization;
+
 /**
  * @description:菜单
  */
@@ -42,6 +47,16 @@ public class Menu {
 	@JoinColumn(name = "C_PID")
 	private Menu parentMenu;
 
+	// 次注解可以使的hibernate不会在表中自动生成该列
+	@Transient
+	public Integer getpId() {
+		if (parentMenu == null) {
+			return 0;
+		} else {
+			return parentMenu.getId();
+		}
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -82,6 +97,7 @@ public class Menu {
 		this.description = description;
 	}
 
+	@JSON(serialize = false)
 	public Set<Role> getRoles() {
 		return roles;
 	}
@@ -89,7 +105,7 @@ public class Menu {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-
+	@JSON(serialize = false)
 	public Set<Menu> getChildrenMenus() {
 		return childrenMenus;
 	}

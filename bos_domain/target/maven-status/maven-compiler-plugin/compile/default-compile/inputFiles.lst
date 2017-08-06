@@ -1,12 +1,16 @@
+E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\system\Role.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\take_delivery\WayBill.java
+E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\system\Menu.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\base\Archive.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\base\FixedArea.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\base\TakeTime.java
+E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\system\Permission.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\page\PageBean.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\base\Area.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\take_delivery\Promotion.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\base\Vehicle.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\base\Standard.java
+E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\system\User.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\base\SubArchive.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\take_delivery\Order.java
 E:\SourceTree\BOS_v2.0\bos_domain\src\main\java\cn\itcast\bos\domain\take_delivery\WorkBill.java

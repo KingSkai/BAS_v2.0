@@ -9,7 +9,7 @@ import cn.itcast.bos.domain.base.Courier;
 
 public interface CourierRepository extends JpaRepository<Courier, Integer>,
 		JpaSpecificationExecutor<Courier> {
-
+	
 	@Query(value = "update Courier set deltag='1' where id = ?")
 	@Modifying
 	public void updateDelTag(Integer id);

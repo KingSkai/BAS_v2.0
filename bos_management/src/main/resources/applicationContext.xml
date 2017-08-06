@@ -24,7 +24,7 @@
 	
 	<!-- 引入WebService配置 -->
 	<import resource="applicationContext-webService.xml"/>
-	
+	 
 	<!-- 引入quartz配置 -->
 	<import resource="applicationContext-quartz.xml"/>
 	
@@ -33,4 +33,7 @@
 	
 	<!-- 引入ElasticSearch 搜索引擎  -->
 	<import resource="applicationContext-elasticsearch.xml"/>
+	
+	<!-- 引入Shiro 权限管理 -->
+	<import resource="applicationContext-shiro.xml"/>
 </beans>

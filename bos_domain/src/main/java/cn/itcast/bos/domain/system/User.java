@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.apache.struts2.json.annotations.JSON;
+
 /**
  * @description:后台用户
  */
@@ -119,6 +121,7 @@ public class User {
 		this.nickname = nickname;
 	}
 
+	@JSON(serialize = false)
 	public Set<Role> getRoles() {
 		return roles;
 	}

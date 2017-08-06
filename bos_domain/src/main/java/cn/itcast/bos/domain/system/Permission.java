@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.apache.struts2.json.annotations.JSON;
+
 /**
  * @description:权限名称
  */
@@ -55,6 +57,7 @@ public class Permission {
 		this.keyword = keyword;
 	}
 
+	@JSON(serialize=false)
 	public Set<Role> getRoles() {
 		return roles;
 	}
