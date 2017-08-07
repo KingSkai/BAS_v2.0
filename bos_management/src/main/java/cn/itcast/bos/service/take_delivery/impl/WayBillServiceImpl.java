@@ -1,5 +1,7 @@
 package cn.itcast.bos.service.take_delivery.impl;
 
+import java.util.List;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -44,11 +46,18 @@ public class WayBillServiceImpl implements WayBillService {
 		} else {
 			// 运单存在
 			try {
-				Integer id = persistWayBill.getId();
-				BeanUtils.copyProperties(persistWayBill, wayBill);
-				persistWayBill.setId(id);
-				// 保存索引
-				wayBillIndexRepository.save(persistWayBill);
+				if (persistWayBill.getSignStatus() == 1) {
+					Integer id = persistWayBill.getId();
+					BeanUtils.copyProperties(persistWayBill, wayBill);
+					persistWayBill.setId(id);
+					persistWayBill.setSignStatus(1); // 设置状态未待发货
+					// 保存索引
+					wayBillIndexRepository.save(persistWayBill);
+				} else {
+					// 运单状态已经在运输中, 不能修改
+					throw new RuntimeException("运单已发出, 无法修改保存!!");
+				}
+
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -57,6 +66,8 @@ public class WayBillServiceImpl implements WayBillService {
 		}
 
 	}
+	
+	
 
 	@Override
 	public Page<WayBill> findPageData(WayBill wayBill, Pageable pageable) {
@@ -135,6 +146,16 @@ public class WayBillServiceImpl implements WayBillService {
 	@Override
 	public WayBill findByWayBillNum(String wayBillNum) {
 		return wayBillRepository.findByWayBillNum(wayBillNum);
+	}
+
+
+
+	@Override
+	public void syncIndex() {
+		// 查询数据库
+		List<WayBill> wayBills = wayBillRepository.findAll();
+		// 同步索引库
+		wayBillIndexRepository.save(wayBills);
 	}
 
 }

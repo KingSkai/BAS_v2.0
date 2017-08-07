@@ -16,4 +16,5 @@ public interface WayBillService {
 	// 根据运单号查询
 	WayBill findByWayBillNum(String wayBillNum);
 
+	void syncIndex();
 }

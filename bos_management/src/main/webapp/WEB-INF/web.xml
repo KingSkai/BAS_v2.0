@@ -24,6 +24,16 @@
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
 
+	<filter>
+		<filter-name>OpenEntityManagerInView</filter-name>
+		<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>OpenEntityManagerInView</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<!-- shiro的Filter -->
 	<filter>
 		<!-- 去spring配置文件中寻找同名bean -->

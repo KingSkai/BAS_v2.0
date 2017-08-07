@@ -15,6 +15,8 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldIndex;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import cn.itcast.bos.domain.base.Area;
 
 /**
@@ -113,7 +115,7 @@ public class WayBill implements Serializable {
 	 */
 	@Column(name = "C_SIGN_STATUS")
 	@Field(index = FieldIndex.not_analyzed, store = true, type = FieldType.String)
-	private Integer signStatus; // 签收状态
+	private Integer signStatus ; // 签收状态,
 
 	/*
 	 * 1、新增修改单据状态为“否” 2、作废时需将状态置为“是” 3、取消作废时需要将状态置为“否”
@@ -144,7 +146,7 @@ public class WayBill implements Serializable {
 	public void setWayBillNum(String wayBillNum) {
 		this.wayBillNum = wayBillNum;
 	}
-
+	@JsonIgnore
 	public Order getOrder() {
 		return order;
 	}
@@ -176,7 +178,7 @@ public class WayBill implements Serializable {
 	public void setSendCompany(String sendCompany) {
 		this.sendCompany = sendCompany;
 	}
-
+	@JsonIgnore
 	public Area getSendArea() {
 		return sendArea;
 	}
@@ -216,7 +218,7 @@ public class WayBill implements Serializable {
 	public void setRecCompany(String recCompany) {
 		this.recCompany = recCompany;
 	}
-
+	@JsonIgnore
 	public Area getRecArea() {
 		return recArea;
 	}
