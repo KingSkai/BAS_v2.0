@@ -66,11 +66,11 @@ public class TransitInfo {
 		}
 		// 添加配送信息
 		if (deliveryInfo != null) {
-			buffer.append(deliveryInfo.getDescription());
+			buffer.append(deliveryInfo.getDescription() + "<br/>");
 		}
 		// 添加签收信息
 		if (signInfo != null) {
-			buffer.append(signInfo.getDescription());
+			buffer.append(signInfo.getDescription() + "<br/>");
 		}
 		return buffer.toString();
 	}

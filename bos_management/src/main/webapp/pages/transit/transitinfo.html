@@ -36,7 +36,7 @@
 				$("body").css({
 					visibility: "visible"
 				});
-				
+
 				var transitToolbar = [{
 					id: 'button-inoutstore',
 					text: '出入库',
@@ -246,12 +246,11 @@
 						width: 100
 					}]
 				];
-				
+
 				// 运输配送管理 表格定义 
 				$('#transitGrid').datagrid({
 					iconCls: 'icon-forward',
 					url: '../../transit_pageQuery.action',
-					//url:"../../data/transit.json",
 					fit: true,
 					border: false,
 					rownumbers: true,
@@ -302,7 +301,7 @@
 				</div>
 			</div>
 			<div region="center" style="overflow:auto;padding:5px;" border="false">
-				<form id="inoutStoreForm" method="post" action="../../inoutstore_save.">
+				<form id="inoutStoreForm" method="post" action="../../inoutstore_save.action">
 					<table class="table-edit" width="80%" align="center">
 						<tr class="title">
 							<td colspan="2">出入库操作</td>

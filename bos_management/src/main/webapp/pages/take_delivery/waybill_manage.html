@@ -72,6 +72,14 @@
 						});
 					}
 				});
+				
+				// 导出Excel 按钮
+				$("#exportXlsBtn").click(function(){
+					// 下载效果
+					$("#searchForm").attr("action","../../report_exportXls.action");
+					$("#searchForm").submit();
+				});
+				
 			});
 		</script>
 	</head>
@@ -87,6 +95,7 @@
 			<a id="help" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">打印标签</a>
 			<a id="help" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">打印工作单</a>
 			<a id="transitBtn" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">开始配送</a>
+			<a id="exportXlsBtn" href="#" icon="icon-print" class="easyui-linkbutton" plain="true">导出Excel报表</a>
 			<br />
 			<form id="searchForm">
 				运单号：<input name="wayBillNum" style="line-height:26px;border:1px solid #ccc">
