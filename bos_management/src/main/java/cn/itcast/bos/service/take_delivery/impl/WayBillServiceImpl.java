@@ -229,7 +229,7 @@ public class WayBillServiceImpl implements WayBillService {
 			}
 
 			SearchQuery searchQuery = new NativeSearchQuery(query);
-			Pageable pageable2 = new PageRequest(0, Integer.MAX_VALUE);
+			Pageable pageable2 = new PageRequest(0, 10000);
 			searchQuery.setPageable(pageable2); // 分页效果
 			// 有条件查询 、查询索引库
 			return wayBillIndexRepository.search(searchQuery).getContent();

@@ -80,6 +80,20 @@
 					$("#searchForm").submit();
 				});
 				
+				// 导出PDF 按钮
+				$("#exportPdBtn").click(function(){
+					// 下载效果
+					$("#searchForm").attr("action","../../report_exportPdf.action");
+					$("#searchBtn").submit();
+				});
+				
+				// 结合模板 导出 PDF 按钮 
+				$("#exportJasperPdfBtn").click(function(){
+					// 下载效果 
+					$("#searchForm").attr("action", "../../report_exportJasperPdf.action");
+					$("#searchForm").submit();
+				});
+				
 			});
 		</script>
 	</head>
@@ -96,8 +110,11 @@
 			<a id="help" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">打印工作单</a>
 			<a id="transitBtn" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">开始配送</a>
 			<a id="exportXlsBtn" href="#" icon="icon-print" class="easyui-linkbutton" plain="true">导出Excel报表</a>
+			<a id="exportPdBtn" href="#" icon="icon-print" class="easyui-linkbutton" plain="true">导出PDF报表</a>
+			<a id="exportJasperPdfBtn" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">结合模板导出PDF报表</a>	
 			<br />
-			<form id="searchForm">
+			
+			<form id="searchForm" method="post">
 				运单号：<input name="wayBillNum" style="line-height:26px;border:1px solid #ccc">
 				发货地：<input name="sendAddress" style="line-height:26px;border:1px solid #ccc" >
 				收货地：<input name="recAddress" style="line-height:26px;border:1px solid #ccc" >
