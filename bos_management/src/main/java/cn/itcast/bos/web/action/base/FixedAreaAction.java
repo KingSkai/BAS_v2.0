@@ -107,8 +107,8 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
 		// 使用webClient调用 webService接口
 		Collection<? extends Customer> collection = WebClient
 				.create("http://localhost:9002/crm_management/services/customerService/associationfixedareacustomers/"
-						+ model.getId()).accept(MediaType.APPLICATION_JSON)
-				.type(MediaType.APPLICATION_JSON).getCollection(Customer.class);
+						+ model.getId()).accept(MediaType.APPLICATION_JSON) // accept代表返回值的类型
+				.type(MediaType.APPLICATION_JSON).getCollection(Customer.class); // type代表参数的类型 , getCollection代表返回的数据类型
 		ActionContext.getContext().getValueStack().push(collection);
 		return SUCCESS;
 	}
